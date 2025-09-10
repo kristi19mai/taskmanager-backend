@@ -9,14 +9,16 @@ const attachCookie = ({ res, user, refreshTokenCrypto }) => {
   res.cookie("accessToken", accessTokenJWT, {
     httpOnly: true,
     signed: true,
-    secure: process.env.NODE_ENV === "production",
+    secure: true,
+    sameSite: "none",
     expires: new Date(Date.now() + oneDay),
   });
   res.cookie("refreshToken", refreshTokenJWT, {
     httpOnly: true,
     expires: new Date(Date.now() + twoMonths),
     signed: true,
-    secure: process.env.NODE_ENV === "production",
+    secure: true,
+    sameSite: "none",
   });
 };
 
