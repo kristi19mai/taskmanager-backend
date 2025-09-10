@@ -30,7 +30,6 @@ const register = async (req, res) => {
     role,
     verificationToken,
   });
-  
 
   const origin = req.get("origin");
 
@@ -122,10 +121,14 @@ const logout = async (req, res) => {
   res.cookie("accessToken", "logout", {
     httpOnly: true,
     expires: new Date(Date.now()),
+    sameSite: "none",
+    secure: true,
   });
   res.cookie("refreshToken", "logout", {
     httpOnly: true,
     expires: new Date(Date.now()),
+    sameSite: "none",
+    secure: true,
   });
   res.status(StatusCodes.OK).json({ msg: "Benutzer abgemeldet" });
 };
