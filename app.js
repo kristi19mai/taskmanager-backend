@@ -46,7 +46,7 @@ app.use(helmet());
 //CORS ist ein Mechanismus, der es Webbrowsern ermöglicht, Ressourcen von einer anderen Domäne als der Ursprungsdomäne anzufordern.
 app.use(
   cors({
-    origin: import.meta.env.FRONTEND_URL, // your frontend URL
+    origin: "https://taskmanager-frontend-8j6l.onrender.com", // your frontend URL
     credentials: true,
   })
 );
