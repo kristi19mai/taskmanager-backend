@@ -22,13 +22,19 @@ const uploadFileLocal = async (req, res) => {
     );
   }
 
+  // Ensure uploads directory exists
+  const uploadsDir = path.join(__dirname, "./public/uploads");
+  if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir, { recursive: true });
+  }
+
   const uniqueSuffix = uuidv4();
   const fileExtension = path.extname(file.name);
   const storedFilename = `${uniqueSuffix}${fileExtension}`;
 
   const filePath = path.join(
-    __dirname,
-    "./public/uploads/" + `${storedFilename}`
+    uploadsDir,
+    storedFilename
   );
 
   await file.mv(filePath);
