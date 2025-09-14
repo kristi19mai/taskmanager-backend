@@ -44,10 +44,13 @@ app.use(xss());
 app.use(helmet());
 
 //CORS ist ein Mechanismus, der es Webbrowsern ermöglicht, Ressourcen von einer anderen Domäne als der Ursprungsdomäne anzufordern.
+// Configure CORS
 app.use(
   cors({
-    origin: "https://taskmanager-frontend-buwv.onrender.com", // your frontend URL
-    credentials: true,
+    origin: "https://taskmanager-frontend-buwv.onrender.com", // Allow only your frontend's origin
+    methods: "GET,POST,PUT,DELETE,PATCH,OPTIONS", // Allowed HTTP methods
+    allowedHeaders: "Content-Type,Authorization", // Allowed headers
+    credentials: true, // If you're using cookies or sessions
   })
 );
 
